@@ -22,11 +22,8 @@
 # Use an official OpenJDK runtime as a parent image
 FROM openjdk:8
 
-# Set the working directory to /app
-WORKDIR /app
-
 # Copy the executable jar file from the local file system to the container's filesystem
-COPY ./build/libs/employeeapp-0.0.1-SNAPSHOT.jar /app
+COPY ./build/libs/employeeapp-0.0.1-SNAPSHOT.jar /build
 
 # Expose port 9595 for the container
 EXPOSE 9595
