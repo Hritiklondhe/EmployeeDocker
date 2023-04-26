@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.11'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'com.palantir.docker' version '0.22.1'
 }
 
 group = 'com.hdfc'
@@ -16,6 +17,13 @@ configurations {
 
 repositories {
 	mavenCentral()
+}
+
+docker {
+	name "employeemanagement"
+	dockerfile file('Dockerfile')
+	copySpec.from(jar).rename(".*","employeemanagement.jar")
+	buildArgs(['JAR_FILE': "employeemanagement.jar"])
 }
 
 dependencies {
